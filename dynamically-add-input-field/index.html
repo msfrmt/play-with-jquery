@@ -1,0 +1,41 @@
+<html>  
+    <head>  
+         <title>Dynamically Add or Remove input fields in UI with JQuery</title>  
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
+         <script src="js/jquery.js"></script>
+    </head>  
+    <body>  
+         <div class="container">  
+              <br />  
+              <br />  
+              <h2 align="center">Dynamically Multiple Data Input </h2>  
+              <div class="form-group">  
+                   <form name="add_name" id="add_name">  
+                        <div class="table-responsive">  
+                             <table class="table table-bordered" id="multiple_data">  
+                                  <tr>  
+                                       <td width="50%"><input type="text" name="product_name[]" placeholder="Enter your Product Name" class="form-control name_list" /></td>  
+                                       <td width="10%"><button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>  
+                                  </tr>  
+                             </table>  
+                             <input type="button" name="submit" id="submit" class="btn btn-primary" value="Submit" />  
+                        </div>  
+                   </form>  
+              </div>  
+         </div>  
+    </body>  
+</html>  
+<script>  
+$(document).ready(function(){  
+    var i=1;  
+    $('#add').click(function(){  
+         i++;  
+         $('#multiple_data').append('<tr id="row'+i+'"><td><input type="text" name="product_name[]" placeholder="Enter your Product Name" class="form-control name_list" /></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');  
+    });  
+    $(document).on('click', '.btn_remove', function(){  
+         var button_id = $(this).attr("id");   
+         $('#row'+button_id+'').remove();  
+    });  
+});  
+</script>
